@@ -9,6 +9,7 @@ const Navigation = () => (
                     <NavLink className="nav-link" exact={true} to="/">Home</NavLink>
                     <NavLink className="nav-link" to="/about">About</NavLink>
                     <NavLink className="nav-link" to="/todo">To-Do</NavLink>
+                    <NavLink className="nav-link" to="/feedback">FeedBack</NavLink>
                 </div>
             </div>
         </div>

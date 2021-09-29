@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route} from "react-router-dom";
 import Todo from "./Todo";
+import FeedBack from "./FeedBack";
 
 const RouterSwitch = () => (
     <Switch>
@@ -12,6 +13,9 @@ const RouterSwitch = () => (
         </Route>
         <Route path="/todo">
             <Todo/>
+        </Route>
+        <Route path="/feedback">
+            <FeedBack/>
         </Route>
     </Switch>
 );

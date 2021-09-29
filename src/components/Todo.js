@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import Field from "./Field";
+import Button from "./Button";
+import TodoList from "./TodoList";
+import TodoItem from "./TodoItem";
 
 const Todo = () => {
     const [field, setField] = useState('');
@@ -23,50 +27,43 @@ const Todo = () => {
 
     const renderTodoList = () => {
         if (!todos.length) {
-            return (<div className="list-group-item list-group-item-danger">Not tasks</div>);
+            return (
+                <TodoItem color="danger">
+                    No tasks
+                </TodoItem>);
         }
-        return todos.map(todo => (
-            <div
-                key={todo.id}
-                className={`list-group-item ${todo.isCompleted ? 'list-group-item-dark' : 'list-group-item-success'}`}
-            ><span
-                onClick={() => {
-                    completedHandler(todo.id);
-                }}
-            >{todo.title}</span> <span
-            onClick={()=> {deleteHandler(todo.id)}}
-            >X</span></div>
-        ));
+        return <TodoList
+            todos={todos}
+            onCompleteHandler={completedHandler}
+            onDeleteHandler={deleteHandler}
+        />
     }
 
     const completedHandler = (todoId) => {
-        const idx = todos.findIndex(t => t.id === todoId);
-        if ( idx === -1 ) return;
         const _todos = [...todos];
+        const idx = _todos.findIndex(t => t.id === todoId);
+        if ( idx === -1 ) return;
         _todos[idx].isCompleted = !_todos[idx].isCompleted;
         setTodos(_todos);
     }
 
     const deleteHandler = (todoId) => {
-        const _todos = [...todos];
-        setTodos( _todos.filter(t => t.id !== todoId ) );
+        // const _todos = [...todos];
+        setTodos( todos.filter(t => t.id !== todoId ) );
     }
 
     return (<>
         <h2>Todo</h2>
         <div className="input-group mb-3">
-            <input
-                type="text"
-                className="form-control"
+            <Field
                 placeholder="Enter new Task"
-                value={field}
+                fieldValue={field}
                 onChange={changeHandler}
             />
-            <button
-                className="btn btn-outline-secondary"
-                type="button"
+            <Button
+                title="Add Task"
                 onClick={clickHandler}
-            >Add Task</button>
+            />
         </div>
         <div className="list-group">
             {renderTodoList()}
