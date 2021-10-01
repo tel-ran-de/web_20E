@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import UsersList from "./UsersList";
-import TodoList from "./TodoList";
+import Todos from "./Todos";
 
 const App = () => {
 
@@ -42,7 +42,10 @@ const App = () => {
                     />
                 </div>
                 <div className="col-8">
-                    <TodoList />
+                    <Todos
+                        activeUser={activeUser}
+                        todos={todos}
+                    />
                 </div>
             </div>
         </div>
