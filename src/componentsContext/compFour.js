@@ -2,11 +2,11 @@ import React, {useContext} from 'react';
 import {CountContext} from "./App";
 
 export default () => {
-    const context = useContext(CountContext);
+    const {onClickHandler} = useContext(CountContext);
     return (
         <div>
             <button
-                onClick={context.onClickHandler}
+                onClick={onClickHandler}
             >Click Me
             </button>
         </div>

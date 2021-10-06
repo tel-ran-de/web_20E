@@ -5,12 +5,17 @@ export const GlobalContext = createContext({})
 const GlobalContextProvider = (props) => {
 
     const [users, setUsers] = useState([]);
-    const [activeUser, setActiveUSer] = useState(null);
+    const [activeUser, setActiveUser] = useState(null);
     const [todos, setTodos] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [activePost, setActivePost] = useState(null);
+    const [comments, setComments] = useState([]);
 
     useEffect(()=>{
         fetchUsers();
         fetchTodos();
+        fetchPosts();
+        fetchComments();
     },[])
 
     const fetchUsers = async() => {
@@ -31,12 +36,38 @@ const GlobalContextProvider = (props) => {
         }
     }
 
+    const fetchPosts = async() => {
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            setPosts(await response.json());
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
+    const fetchComments = async() => {
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/comments');
+            setComments(await response.json());
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
     const getTodosByUserId = () => todos.filter(t => t.userId === activeUser.id);
+    const getPostsByUserId = () => posts.filter(t => t.userId === activeUser.id);
+    const getCommentsByPostId = () => comments.filter(c => c.postId === activePost.id)
 
     const changeActiveUser = userId => {
         const idx = users.findIndex(user => user.id===userId);
         if (idx === -1) return;
-        setActiveUSer(users[idx]);
+        setActiveUser(users[idx]);
+    }
+
+    const changeActivePost = postId => {
+        const idx = posts.findIndex(post => post.id===postId);
+        if (idx === -1) return;
+        setActivePost(posts[idx]);
     }
 
 
@@ -44,8 +75,12 @@ const GlobalContextProvider = (props) => {
         <GlobalContext.Provider value={{
             users,
             activeUser,
+            activePost,
             changeActiveUser,
-            getTodosByUserId
+            getTodosByUserId,
+            getPostsByUserId,
+            changeActivePost,
+            getCommentsByPostId
         }}>
             {props.children}
         </GlobalContext.Provider>
