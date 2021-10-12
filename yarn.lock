@@ -8959,6 +8959,11 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
+react-gallery-designer@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/react-gallery-designer/-/react-gallery-designer-1.4.5.tgz#867d9afd2e917bddd85daabce4ad28dced8b36c6"
+  integrity sha512-Ad2azpSkd0rvHgo29geie58xmvhtGNOLn6GCZu5fPBY8OHR6+voKMISaMpDgz67hI89wIEZltalPfcVCZ7KYdA==
+
 react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
