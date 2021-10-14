@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 
-const App = () => {
+const App = (props) => {
 
     const [field, setField] = useState("");
     const todos = useSelector(state => state.todos)

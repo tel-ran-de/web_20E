@@ -24,6 +24,12 @@ export const reducer = (state = initialState, action) => {
             array = [...state.todos]
             array = array.filter(ele => ele.id !== action.payload)
             return {...state, todos: array }
+        case 'COMPLETE_TODO':
+            array = [...state.todos]
+            index = array.findIndex(ele => ele.id === action.payload)
+            if (index === -1) return state
+            array[index].completed = !array[index].completed
+            return {...state, todos: array }
         default:
             return state
     }
