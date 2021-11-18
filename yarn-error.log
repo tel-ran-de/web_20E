@@ -1,0 +1,41 @@
+Arguments: 
+  /usr/local/Cellar/node/16.10.0/bin/node /Users/kiadev/.yarn/bin/yarn.js add express sequelize cors mysql2 jsonwebtocken bcryptjs nodemon -D
+
+PATH: 
+  /Users/kiadev/.yarn/bin:/Users/kiadev/.config/yarn/global/node_modules/.bin:/Users/kiadev/bin:/usr/local/bin:/Users/kiadev/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  16.10.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/jsonwebtocken: Not found
+      at Request.params.callback [as _callback] (/Users/kiadev/.yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/Users/kiadev/.yarn/lib/cli.js:140749:22)
+      at Request.emit (node:events:390:28)
+      at Request.<anonymous> (/Users/kiadev/.yarn/lib/cli.js:141721:10)
+      at Request.emit (node:events:390:28)
+      at IncomingMessage.<anonymous> (/Users/kiadev/.yarn/lib/cli.js:141643:12)
+      at Object.onceWrapper (node:events:509:28)
+      at IncomingMessage.emit (node:events:402:35)
+      at endReadableNT (node:internal/streams/readable:1343:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "lesson-11-18",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
