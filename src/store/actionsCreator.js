@@ -13,15 +13,41 @@ export const logIn = (user) => {
                 }
             })
             const data = await response.json()
-            localStorage.setItem('apiKeyToken', data.accessToken)
-            dispatch( doLogin() )
+            if ( response.status === 200 ) {
+                localStorage.setItem('apiKeyToken', data.accessToken)
+                dispatch( doLogin() )
+            } else {
+                alert(data.message)
+            }
         } catch (e) {
             console.log( e.message )
         }
     }
 }
 
-const getAllUsers = () => {
+export const registrate = (user) => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`${URL}/auth/signup`, {
+                method: 'POST',
+                body: JSON.stringify(user),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const data = await response.json()
+            if ( response.status === 200 ) {
+                dispatch(logIn(user))
+            } else {
+                alert(data.message)
+            }
+        } catch (e) {
+            console.log( e.message )
+        }
+    }
+}
+
+export const getAllUsers = () => {
     return async dispatch => {
         try {
             const response = await fetch(`${URL}/users`, {
@@ -38,6 +64,14 @@ const getAllUsers = () => {
     }
 }
 
+export const logout = () => {
+    return dispatch => {
+        localStorage.removeItem('apiKeyToken')
+        dispatch(doLogout())
+        dispatch(setAllUsers([]))
+    }
+}
+
 const setAllUsers = (data) => {
     return {
         type: FETCH_USERS,
@@ -45,13 +79,13 @@ const setAllUsers = (data) => {
     }
 }
 
-const doLogin = () => {
+export const doLogin = () => {
     return {
         type: LOGIN
     }
 }
 
-export const doLogout = () => {
+const doLogout = () => {
     return {
         type: LOGOUT
     }

@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import {logIn} from "../store/actionsCreator";
+import {registrate} from "../store/actionsCreator";
 import {useNavigate} from "react-router-dom";
 
 const initUser = {
     email: '',
-    password: ''
+    password: '',
+    username: ''
 }
 
 export default () => {
@@ -27,13 +28,24 @@ export default () => {
 
     const submitFormHandler = event => {
         event.preventDefault()
-        dispatch( logIn(user) )
+        dispatch( registrate(user) )
         setUser( initUser )
     }
 
     return (
         <div className="w-50 mx-auto mt-5">
             <form onSubmit={submitFormHandler}>
+                <div className="mb-3 row">
+                    <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        onChange={changeFieldHandler}
+                        placeholder="Enter User Name"
+                        value={user.username}
+                    />
+                </div>
                 <div className="mb-3 row">
                     <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
                     <input
